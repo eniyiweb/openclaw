@@ -7,6 +7,9 @@ services:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     environment:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
+      OPENCLAW_BROWSER_EXECUTABLE_PATH: "/usr/bin/chromium"
+      OPENCLAW_BROWSER_HEADLESS: "true"
+      OPENCLAW_BROWSER_NO_SANDBOX: "true"
 
   openclaw-cli:
     build:
