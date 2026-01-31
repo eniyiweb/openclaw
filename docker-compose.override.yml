@@ -1,0 +1,6 @@
+services:
+  openclaw-gateway:
+    build:
+      context: .
+      args:
+        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
