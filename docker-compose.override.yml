@@ -2,7 +2,16 @@ services:
   openclaw-gateway:
     build:
       context: .
+      dockerfile: Dockerfile.custom
       args:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     environment:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
+
+  openclaw-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.custom
+      args:
+        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
+
