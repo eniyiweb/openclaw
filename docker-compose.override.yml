@@ -4,3 +4,5 @@ services:
       context: .
       args:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
+    environment:
+      BRAVE_API_KEY: ${BRAVE_API_KEY}
