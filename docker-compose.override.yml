@@ -18,4 +18,5 @@ services:
       dockerfile: Dockerfile.custom
       args:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
-        TZ: Europe/Istanbul
+    environment:
+      TZ: Europe/Istanbul
