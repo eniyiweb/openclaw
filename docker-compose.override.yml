@@ -10,6 +10,7 @@ services:
       OPENCLAW_BROWSER_EXECUTABLE_PATH: "/usr/bin/chromium"
       OPENCLAW_BROWSER_HEADLESS: "true"
       OPENCLAW_BROWSER_NO_SANDBOX: "true"
+      TZ: Europe/Istanbul
 
   openclaw-cli:
     build:
@@ -17,4 +18,4 @@ services:
       dockerfile: Dockerfile.custom
       args:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
-
+        TZ: Europe/Istanbul
