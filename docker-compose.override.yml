@@ -1,6 +1,5 @@
 services:
   openclaw-gateway:
-    image: localhost/openclaw:local
     build:
       context: .
       dockerfile: Dockerfile.custom
@@ -14,7 +13,6 @@ services:
       TZ: Europe/Istanbul
 
   openclaw-cli:
-    image: localhost/openclaw:local
     build:
       context: .
       dockerfile: Dockerfile.custom
