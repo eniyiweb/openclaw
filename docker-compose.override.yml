@@ -1,12 +1,10 @@
 services:
   openclaw-gateway:
-    pull_policy: never
     build:
       context: .
       dockerfile: Dockerfile.custom
       args:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
-    pull_policy: never
     environment:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
       OPENCLAW_BROWSER_EXECUTABLE_PATH: "/usr/bin/chromium"
@@ -15,7 +13,6 @@ services:
       TZ: Europe/Istanbul
 
   openclaw-cli:
-    pull_policy: never
     build:
       context: .
       dockerfile: Dockerfile.custom
