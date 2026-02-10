@@ -11,6 +11,7 @@ services:
       OPENCLAW_BROWSER_HEADLESS: "true"
       OPENCLAW_BROWSER_NO_SANDBOX: "true"
       TZ: Europe/Istanbul
+    pull_policy: never
 
   openclaw-cli:
     build:
@@ -20,3 +21,4 @@ services:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     environment:
       TZ: Europe/Istanbul
+    pull_policy: never
