@@ -12,8 +12,21 @@ services:
       OPENCLAW_BROWSER_NO_SANDBOX: "true"
       TZ: Europe/Istanbul
     labels:
-      - traefik.http.middlewares.openclaw-auth.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_HASH}
-      - traefik.http.routers.gerekli-openclaw-bx3fba-103-websecure.middlewares=openclaw-auth
+      # 1. Middleware Tanımları
+      - "traefik.http.middlewares.openclaw-auth.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_HASH}"
+      - "traefik.http.middlewares.pi-allow.ipallowlist.sourcerange=31.223.73.95"
+      
+      # 2. Mevcut router'a middleware zinciri ekle (Önce IP'ye bak, değilse şifre sor)
+      - "traefik.http.routers.openclaw-pi.rule=Host(`bot.myvps.tr`) && ClientIP(`31.223.73.95`)"
+      - "traefik.http.routers.openclaw-pi.entrypoints=websecure"
+      - "traefik.http.routers.openclaw-pi.priority=100"
+      - "traefik.http.routers.openclaw-pi.service=gerekli-openclaw-bx3fba-103-websecure"
+      - "traefik.http.routers.openclaw-pi.tls.certresolver=letsencrypt"
+
+      # --- Ana router'a sadece şifreleme ekle ---
+      - "traefik.http.routers.gerekli-openclaw-bx3fba-103-websecure.middlewares=openclaw-auth"
+      - "traefik.http.routers.gerekli-openclaw-bx3fba-103-websecure.priority=50"
+
 
   openclaw-cli:
     build:
