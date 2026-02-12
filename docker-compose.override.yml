@@ -11,6 +11,9 @@ services:
       OPENCLAW_BROWSER_HEADLESS: "true"
       OPENCLAW_BROWSER_NO_SANDBOX: "true"
       TZ: Europe/Istanbul
+  labels:
+    - traefik.http.middlewares.openclaw-auth.basicauth.users=engin:$$2y$$10$$jwZOLv7u0JeaI./6QkeeHuhhIDAz84Joq90Fq2mliy1bRmqIiKdDa
+    - traefik.http.routers.gerekli-openclaw-bx3fba-103-websecure.middlewares=openclaw-auth
 
   openclaw-cli:
     build:
