@@ -25,6 +25,9 @@ COPY scripts ./scripts
 
 RUN pnpm install --frozen-lockfile
 
+# Install Playwright Chromium browser (with system dependencies)
+RUN node /app/node_modules/playwright-core/cli.js install chromium --with-deps
+
 COPY . .
 RUN pnpm build
 # Force pnpm for UI build (Bun may fail on ARM/Synology architectures)
