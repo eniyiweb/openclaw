@@ -8,7 +8,6 @@ services:
     environment:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/lib/chromium/chromium
-      PLAYWRIGHT_BROWSERS_PATH: /usr/lib
       TZ: Europe/Istanbul
     labels:
       # 1. Middleware Tanımları
