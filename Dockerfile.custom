@@ -28,6 +28,11 @@ RUN pnpm install --frozen-lockfile
 # Install Playwright Chromium browser (with system dependencies)
 RUN node /app/node_modules/playwright-core/cli.js install chromium --with-deps
 
+# CRITICAL: Symlink the playwright binary to a path OpenClaw ALWAYS checks
+RUN ln -sf $(find /root/.cache/ms-playwright -name "chrome" -executable | head -n 1) /usr/bin/google-chrome-stable
+# Ensure node user can execute it
+RUN chmod -R 755 /root/.cache
+
 COPY . .
 RUN pnpm build
 # Force pnpm for UI build (Bun may fail on ARM/Synology architectures)
