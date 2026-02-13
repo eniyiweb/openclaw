@@ -7,9 +7,8 @@ services:
         OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     environment:
       BRAVE_API_KEY: ${BRAVE_API_KEY}
-      OPENCLAW_BROWSER_EXECUTABLE_PATH: "/usr/bin/chromium"
-      OPENCLAW_BROWSER_HEADLESS: "true"
-      OPENCLAW_BROWSER_NO_SANDBOX: "true"
+      PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/lib/chromium/chromium
+      PLAYWRIGHT_BROWSERS_PATH: /usr/lib
       TZ: Europe/Istanbul
     labels:
       # 1. Middleware Tanımları
