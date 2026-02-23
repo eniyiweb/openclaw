@@ -3,14 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        BASE_IMAGE: ${OPENCLAW_IMAGE:-openclaw:local}
-    image: openclaw-custom:latest
 
   openclaw-cli:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        BASE_IMAGE: ${OPENCLAW_IMAGE:-openclaw:local}
-    image: openclaw-custom:latest
