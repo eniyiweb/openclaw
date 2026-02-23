@@ -3,6 +3,17 @@ services:
     build: 
       context: .
     pull_policy: build
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "${OPENCLAW_GATEWAY_BIND}",
+        "--port",
+        "${OPENCLAW_GATEWAY_PORT}",
+        "--allow-unconfigured",
+      ]
 
   openclaw-cli:
     build: 
