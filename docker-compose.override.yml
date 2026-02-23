@@ -4,6 +4,7 @@ services:
       context: .
       args:
         OPENCLAW_INSTALL_BROWSER: "1"
+        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     pull_policy: build
     command:
       [
@@ -22,4 +23,5 @@ services:
       context: .
       args:
         OPENCLAW_INSTALL_BROWSER: "1"
+        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
     pull_policy: build
