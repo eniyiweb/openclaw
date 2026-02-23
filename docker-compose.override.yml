@@ -1,6 +1,8 @@
 services:
   openclaw-gateway:
-    build: .
+    build: 
+      context: .
 
   openclaw-cli:
-    build: .
+    build: 
+      context: .
