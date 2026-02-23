@@ -2,6 +2,8 @@ services:
   openclaw-gateway:
     build: 
       context: .
+      args:
+        OPENCLAW_INSTALL_BROWSER: "1"
     pull_policy: build
     command:
       [
@@ -18,4 +20,6 @@ services:
   openclaw-cli:
     build: 
       context: .
+      args:
+        OPENCLAW_INSTALL_BROWSER: "1"
     pull_policy: build
