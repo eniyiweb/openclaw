@@ -2,7 +2,9 @@ services:
   openclaw-gateway:
     build: 
       context: .
+    pull_policy: build
 
   openclaw-cli:
     build: 
       context: .
+    pull_policy: build
