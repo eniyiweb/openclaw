@@ -1,5 +1,7 @@
 services:
   openclaw-gateway:
+    environment:
+      KIMI_API_KEY: ${KIMI_API_KEY}
     build: 
       context: .
       args:
@@ -19,6 +21,8 @@ services:
       ]
 
   openclaw-cli:
+    environment:
+      KIMI_API_KEY: ${KIMI_API_KEY}
     build: 
       context: .
       args:
