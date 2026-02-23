@@ -1,10 +1,6 @@
 services:
   openclaw-gateway:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
 
   openclaw-cli:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
