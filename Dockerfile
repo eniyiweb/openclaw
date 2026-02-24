@@ -9,6 +9,9 @@ RUN corepack enable
 WORKDIR /app
 RUN chown node:node /app
 
+RUN mkdir -p /usr/local/lib/node_modules /usr/local/bin && \
+    chown -R node:node /usr/local/lib/node_modules /usr/local/bin
+
 ARG OPENCLAW_DOCKER_APT_PACKAGES=""
 RUN if [ -n "$OPENCLAW_DOCKER_APT_PACKAGES" ]; then \
       apt-get update && \
