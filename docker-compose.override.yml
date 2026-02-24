@@ -20,12 +20,3 @@ services:
         "--allow-unconfigured",
       ]
 
-  openclaw-cli:
-    environment:
-      KIMI_API_KEY: ${KIMI_API_KEY}
-    build: 
-      context: .
-      args:
-        OPENCLAW_INSTALL_BROWSER: "1"
-        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
-    pull_policy: build
