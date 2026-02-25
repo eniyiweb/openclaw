@@ -11,3 +11,12 @@ services:
     command: >
           bash -c "pip3 install --break-system-packages duckduckgo-search &&
           node dist/index.js gateway --bind ${OPENCLAW_GATEWAY_BIND:-lan} --port ${OPENCLAW_GATEWAY_PORT:-18789} --allow-unconfigured"
+    depends_on:
+          - ollama
+
+  ollama:
+      image: ollama/ollama:latest
+      container_name: openclaw-ollama
+      volumes:
+        - ../ollama_data:/root/.ollama
+      restart: unless-stopped
