@@ -2,6 +2,10 @@ services:
   openclaw-gateway:
     environment:
       KIMI_API_KEY: ${KIMI_API_KEY}
+    security_opt:
+          - seccomp:unconfined
+        cap_add:
+          - SYS_ADMIN
     build: 
       context: .
       args:
