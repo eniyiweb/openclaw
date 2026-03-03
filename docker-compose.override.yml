@@ -13,10 +13,18 @@ services:
           node dist/index.js gateway --bind ${OPENCLAW_GATEWAY_BIND:-lan} --port ${OPENCLAW_GATEWAY_PORT:-18789} --allow-unconfigured"
     depends_on:
           - ollama
+    networks:
+      - dokploy-network
 
   ollama:
-      image: ollama/ollama:latest
-      container_name: openclaw-ollama
-      volumes:
-        - ../ollama_data:/root/.ollama
-      restart: unless-stopped
+    image: ollama/ollama:latest
+    container_name: openclaw-ollama
+    volumes:
+      - ../ollama_data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
