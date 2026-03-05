@@ -19,6 +19,8 @@ services:
   ollama:
     image: ollama/ollama:latest
     container_name: openclaw-ollama
+    environment:
+      OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE}
     volumes:
       - ../ollama_data:/root/.ollama
     restart: unless-stopped
