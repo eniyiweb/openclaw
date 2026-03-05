@@ -15,6 +15,9 @@ services:
           - ollama
     networks:
       - dokploy-network
+    labels:
+      - traefik.http.routers.gerekli-openclaw-dwjnsh-112-websecure.middlewares=test-ipallowlist
+      - traefik.http.middlewares.test-ipallowlist.ipallowlist.sourcerange=212.156.81.146, 31.223.73.95
 
   ollama:
     image: ollama/ollama:latest
