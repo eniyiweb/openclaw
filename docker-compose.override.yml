@@ -1,0 +1,35 @@
+services:
+  openclaw-gateway:
+    environment:
+      KIMI_API_KEY: ${KIMI_API_KEY}
+    build: 
+      context: .
+      args:
+        OPENCLAW_INSTALL_BROWSER: "1"
+        OPENCLAW_DOCKER_APT_PACKAGES: ${OPENCLAW_DOCKER_APT_PACKAGES}
+    pull_policy: build
+    command: >
+          bash -c "pip3 install --break-system-packages ddgs &&
+          node dist/index.js gateway --bind ${OPENCLAW_GATEWAY_BIND:-lan} --port ${OPENCLAW_GATEWAY_PORT:-18789} --allow-unconfigured"
+    depends_on:
+          - ollama
+    networks:
+      - dokploy-network
+    labels:
+      - traefik.http.routers.gerekli-openclaw-dwjnsh-112-websecure.middlewares=test-ipallowlist
+      - traefik.http.middlewares.test-ipallowlist.ipallowlist.sourcerange=212.156.81.146, 31.223.73.95
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: openclaw-ollama
+    environment:
+      OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE}
+    volumes:
+      - ../ollama_data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
